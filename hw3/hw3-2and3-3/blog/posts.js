@@ -30,10 +30,9 @@ function PostsDAO(db) {
 
         // now insert the post
         // hw3.2 TODO
-        posts.insert(post, function(err, records){
-            callback(err, permalink);
-        });
-    }
+        posts.insert(post, function(){});
+        callback(null, permalink);
+    };
 
     this.getPosts = function(num, callback) {
         "use strict";

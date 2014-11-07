@@ -15,11 +15,12 @@ MongoClient.connect('mongodb://192.168.49.128:27017/blog', function(err, db) {
     app.set('view engine', 'html');
     app.set('views', __dirname + '/views');
 
-    // Express middleware to populate 'req.cookies' so we can access cookies
-    app.use(cookieparser);
+    app.use(cookieparser());
 
     // Express middleware to populate 'req.body' so we can access POST variables
-    app.use(bodyparser);
+    app.use(bodyparser.urlencoded({
+        extended: true
+    }));
 
     // Application routes
     routes(app, db);
